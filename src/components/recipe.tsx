@@ -21,8 +21,8 @@ function Recipe() {
       <section>
         <p>{testRecipe.description}</p>
         <p>Serves: {testRecipe.servings}</p>
-        <p>{testRecipe.prepTime}</p>
-        <p>{testRecipe.cookTime}</p>
+        <p>Prep Time: {testRecipe.prepTime}</p>
+        <p>Cooking Time: {testRecipe.cookTime}</p>
         {testRecipe.sproutyPie ? <p>Official Sprouty Pie recipe</p> : ""}
         {testRecipe.lollysPantry ? <p>Official Lolly's Pantry recipe</p> : ""}
       </section>
