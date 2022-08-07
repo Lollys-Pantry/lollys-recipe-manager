@@ -20,7 +20,7 @@ function Recipe() {
       </header>
       <section>
         <p>{testRecipe.description}</p>
-        <p>Serves: {testRecipe.servings}</p>
+        <p>Servings: {testRecipe.servings}</p>
         <p>Prep Time: {testRecipe.prepTime}</p>
         <p>Cooking Time: {testRecipe.cookTime}</p>
         {testRecipe.sproutyPie ? <p>Official Sprouty Pie recipe</p> : ""}

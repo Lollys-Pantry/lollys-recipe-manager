@@ -11,7 +11,7 @@ describe("when rendered", () => {
       screen.getByText(/A delicious spicy salsa made with roasted tomatoes and serrano peppers/)
     ).toBeInTheDocument
     expect(
-      screen.getByText(/Serves: 10/)
+      screen.getByText(/Servings: 10/)
     ).toBeInTheDocument
     expect(
       screen.getByText(/Prep Time: 20 minutes/)
