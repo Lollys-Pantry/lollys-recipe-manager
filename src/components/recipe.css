@@ -1,0 +1,14 @@
+section, .recipe {
+  margin-top: 30px;
+  font-size: calc(10px + 2vmin);
+}
+
+h1 {
+  font-size: calc(10px + 4vmin);
+  color: #4d4d4d;
+}
+
+p {
+  color: #4d4d4d;
+  font-size: calc(10px + 1vmin);
+}
