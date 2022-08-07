@@ -1,3 +1,4 @@
+import React from 'react';
 import logo from './img/LP_Retro_Logo.jpg';
 import './App.css';
 
