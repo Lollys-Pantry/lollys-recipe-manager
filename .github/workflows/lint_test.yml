@@ -1,0 +1,13 @@
+name: Test
+on: [push, pull_request]
+jobs: 
+  eslint-jest:
+    name: ESLint and Jest
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run ESLint
+        run: npx eslint src/*.*
+      - name: Run Jest
+        run: yarn test
