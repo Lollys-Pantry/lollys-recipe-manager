@@ -7,7 +7,17 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Install
+        uses: borales/actions-yarn@v3.0.0
+        with:
+          cmd: install # will run `yarn install` command
+      - name: Build
+        uses: borales/actions-yarn@v3.0.0
+        with:
+          cmd: build # will run `yarn build` command
+      - name: Jest
+        uses: borales/actions-yarn@v3.0.0
+        with:
+          cmd: test # will run `yarn test
       - name: Run ESLint
         run: npx eslint src/*.*
-      - name: Run Jest
-        run: yarn test
