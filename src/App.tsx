@@ -14,7 +14,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Visit Lolly's Pantry
+          Visit Lolly&apos;s Pantry
         </a>
       </header>
       <Recipe />
