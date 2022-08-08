@@ -1,7 +1,7 @@
-import React from 'react';
-import logo from './img/LP_Retro_Logo.jpg';
-import Recipe from './components/recipe';
-import './App.css';
+import React from "react";
+import logo from "./img/LP_Retro_Logo.jpg";
+import Recipe from "./components/recipe";
+import "./App.css";
 
 function App() {
   return (

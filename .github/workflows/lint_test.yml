@@ -1,6 +1,6 @@
 name: Test
 on: [push, pull_request]
-jobs: 
+jobs:
   eslint-jest:
     name: ESLint and Jest
     runs-on: ubuntu-latest
@@ -19,5 +19,7 @@ jobs:
         uses: borales/actions-yarn@v3.0.0
         with:
           cmd: test # will run `yarn test
-      - name: Run ESLint
+      - name: ESLint
         run: npx eslint src/*.*
+      - name: Prettier
+        run: npx prettier --check .
