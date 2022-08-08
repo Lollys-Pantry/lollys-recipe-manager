@@ -1,7 +1,7 @@
-import React from 'react';
-import logo from './img/LP_Retro_Logo.jpg';
-import Recipe from './components/recipe';
-import './App.css';
+import React from "react";
+import logo from "./img/LP_Retro_Logo.jpg";
+import Recipe from "./components/recipe";
+import "./App.css";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Visit Lolly's Pantry
+          Visit Lolly&apos;s Pantry
         </a>
       </header>
       <Recipe />

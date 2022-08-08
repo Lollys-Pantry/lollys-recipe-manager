@@ -1,0 +1,25 @@
+name: Test
+on: [push, pull_request]
+jobs:
+  eslint-jest:
+    name: ESLint and Jest
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install
+        uses: borales/actions-yarn@v3.0.0
+        with:
+          cmd: install # will run `yarn install` command
+      - name: Build
+        uses: borales/actions-yarn@v3.0.0
+        with:
+          cmd: build # will run `yarn build` command
+      - name: Jest
+        uses: borales/actions-yarn@v3.0.0
+        with:
+          cmd: test # will run `yarn test
+      - name: ESLint
+        run: npx eslint src/*.*
+      - name: Prettier
+        run: npx prettier --check .
