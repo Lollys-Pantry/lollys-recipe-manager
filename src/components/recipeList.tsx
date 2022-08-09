@@ -4,14 +4,14 @@ import "./recipeList.css";
 
 function RecipeList() {
   const recipes: {
-    id: number,
-    recipeName: string,
-    description: string,
-    servings: number,
-    prepTime: string,
-    cookTime: string,
-    sproutyPie: boolean,
-    lollysPantry: boolean,
+    id: number;
+    recipeName: string;
+    description: string;
+    servings: number;
+    prepTime: string;
+    cookTime: string;
+    sproutyPie: boolean;
+    lollysPantry: boolean;
   }[] = [
     {
       id: 0,
@@ -34,14 +34,12 @@ function RecipeList() {
       cookTime: "15 minutes",
       sproutyPie: true,
       lollysPantry: false,
-    }
+    },
   ];
 
-  const recipeItems = recipes.map((recipe) =>
-    <li key={recipe.id}>
-      {recipe.recipeName}
-    </li>
-);
+  const recipeItems = recipes.map((recipe) => (
+    <li key={recipe.id}>{recipe.recipeName}</li>
+  ));
   return (
     <div className="recipe-list">
       <h2>Recipes</h2>
