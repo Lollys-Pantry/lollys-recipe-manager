@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "./img/LP_Retro_Logo.jpg";
 import Recipe from "./components/recipe";
+import RecipeList from "./components/recipeList";
 import "./App.css";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           Visit Lolly&apos;s Pantry
         </a>
       </header>
+      <RecipeList />
       <Recipe />
     </div>
   );
