@@ -1,0 +1,11 @@
+h2 {
+  font-size: calc(10px + 4vmin);
+  color: #4d4d4d;
+}
+
+ul > li {
+  color: #4d4d4d;
+  font-size: calc(10px + 1vmin);
+  list-style-type: none;
+  line-height: 2;
+}
