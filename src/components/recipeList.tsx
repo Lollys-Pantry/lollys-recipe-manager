@@ -1,5 +1,5 @@
 import React from "react";
-// import {Link} from 'react-router-dom;
+import { Link } from "react-router-dom";
 import "./recipeList.css";
 
 function RecipeList() {
@@ -38,7 +38,9 @@ function RecipeList() {
   ];
 
   const recipeItems = recipes.map((recipe) => (
-    <li key={recipe.id}>{recipe.recipeName}</li>
+    <li key={recipe.id}>
+      <Link to={`/recipe/${recipe.id}`}>{recipe.recipeName}</Link>
+    </li>
   ));
   return (
     <div className="recipe-list">
