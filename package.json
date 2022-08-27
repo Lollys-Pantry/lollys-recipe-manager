@@ -39,6 +39,9 @@
       "last 1 safari version"
     ]
   },
+  "resolutions": {
+    "autoprefixer": "10.4.5"
+  },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.32.0",
     "@typescript-eslint/parser": "^5.32.0",
