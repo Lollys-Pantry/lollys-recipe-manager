@@ -40,7 +40,9 @@ import RecipeList from "./recipeList";
 describe("when rendered", () => {
   it("should have the recipe title", () => {
     render(<RecipeList />, { wrapper: MemoryRouter });
-    expect(screen.getByText("These recipes are from the api")).toBeInTheDocument();
+    expect(
+      screen.getByText("These recipes are from the api")
+    ).toBeInTheDocument();
     // expect(screen.getByText("Tofu Rice Bowls")).toBeInTheDocument();
   });
 });
