@@ -1,14 +1,15 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route , BrowserRouter as Router } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
 import logo from "./img/LP_Retro_Logo.jpg";
-import Recipe from "./components/recipe";
-import RecipeList from "./components/recipeList";
+import RecipeList from './components/recipeList';
 import "./App.css";
 
 function App() {
+
   return (
     <Router>
-      <div className="App">
+      <Container>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <a
@@ -20,11 +21,12 @@ function App() {
             Visit Lolly&apos;s Pantry
           </a>
         </header>
-      </div>
-      <Routes>
-        <Route path="/" element={<RecipeList />} />
-        <Route path="/recipe/:recipeId" element={<Recipe />} />
-      </Routes>
+ 
+        <Routes>
+          <Route path="/" element={<RecipeList />} />
+          {/* <Route path="/recipe/:recipeId" element={<Recipe />} /> */}
+        </Routes>
+      </Container>
     </Router>
   );
 }
