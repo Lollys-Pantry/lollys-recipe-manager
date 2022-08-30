@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Recipe from "./recipe";
 import RecipeForm from "./recipeform";
-import { IRecipeItem } from "../types/data";
+import { RecipeItem } from "../types/data";
 import "./recipeList.css";
 
 function RecipeList() {
-  const [recipes, setRecipes] = useState<IRecipeItem[]>([]);
+  const [recipes, setRecipes] = useState<RecipeItem[]>([]);
   const [isUpdate, setUpdate] = useState<boolean>(false);
 
   const getRecipes = async () => {
@@ -25,7 +25,7 @@ function RecipeList() {
     setUpdate(false);
   }, [isUpdate]);
 
-  const updateRecipeList = (recipe: IRecipeItem) => {
+  const updateRecipeList = (recipe: RecipeItem) => {
     // eslint-disable-next-line no-underscore-dangle
     const _recipes = recipes;
     _recipes.unshift(recipe);
@@ -40,7 +40,7 @@ function RecipeList() {
       <div>
         <h2>These recipes are from the api</h2>
         <ul>
-          {recipes.map((recipe: IRecipeItem) => (
+          {recipes.map((recipe: RecipeItem) => (
             <Recipe
               key={recipe.id}
               name={recipe.name}

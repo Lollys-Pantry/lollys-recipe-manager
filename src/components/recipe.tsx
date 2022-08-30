@@ -1,8 +1,8 @@
 import React from "react";
-import { IRecipeItem } from "../types/data";
+import { RecipeItem } from "../types/data";
 import "./recipe.css";
 
-function Recipe(props: IRecipeItem) {
+function Recipe(props: RecipeItem) {
   const {
     name,
     description,

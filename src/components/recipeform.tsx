@@ -3,12 +3,12 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { IRecipeItem } from "../types/data";
+import { RecipeItem } from "../types/data";
 
 function RecipeForm({
   updateRecipeList,
 }: {
-  updateRecipeList: (recipe: IRecipeItem) => void;
+  updateRecipeList: (recipe: RecipeItem) => void;
 }) {
   const [name, setName] = useState<string>("");
   const [description, setDescription] = useState<string>("");
@@ -20,7 +20,7 @@ function RecipeForm({
   } = useForm();
 
   const onSubmit = async () => {
-    const recipeData: IRecipeItem = {
+    const recipeData: RecipeItem = {
       name,
       description,
       servings: 0,
