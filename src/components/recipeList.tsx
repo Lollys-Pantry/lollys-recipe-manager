@@ -1,52 +1,60 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Recipe from "./recipe";
+import RecipeForm from "./recipeform";
+import { RecipeItem } from "../types/data";
 import "./recipeList.css";
 
 function RecipeList() {
-  const recipes: {
-    id: number;
-    recipeName: string;
-    description: string;
-    servings: number;
-    prepTime: string;
-    cookTime: string;
-    sproutyPie: boolean;
-    lollysPantry: boolean;
-  }[] = [
-    {
-      id: 0,
-      recipeName: "Cole's Roasted Salsa",
-      description:
-        "A delicious spicy salsa made with roasted tomatoes and serrano peppers",
-      servings: 10,
-      prepTime: "20 minutes",
-      cookTime: "10 minutes",
-      sproutyPie: false,
-      lollysPantry: true,
-    },
-    {
-      id: 1,
-      recipeName: "Tofu Rice Bowls",
-      description:
-        "Air fried tofu sits on a bed of jasmine rice with teriyaki sauce, sesame seeds and green onion toppings.",
-      servings: 4,
-      prepTime: "10 minutes",
-      cookTime: "15 minutes",
-      sproutyPie: true,
-      lollysPantry: false,
-    },
-  ];
+  const [recipes, setRecipes] = useState<RecipeItem[]>([]);
+  const [isUpdate, setUpdate] = useState<boolean>(false);
 
-  const recipeItems = recipes.map((recipe) => (
-    <li key={recipe.id}>
-      <Link to={`/recipe/${recipe.id}`}>{recipe.recipeName}</Link>
-    </li>
-  ));
+  const getRecipes = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/api/v1/recipes");
+      const { data } = response;
+      setRecipes(data);
+    } catch (error: unknown) {
+      // eslint-disable-next-line no-console
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getRecipes();
+    setUpdate(false);
+  }, [isUpdate]);
+
+  const updateRecipeList = (recipe: RecipeItem) => {
+    // eslint-disable-next-line no-underscore-dangle
+    const _recipes = recipes;
+    _recipes.unshift(recipe);
+    setRecipes(_recipes);
+
+    setUpdate(true);
+  };
+
   return (
-    <div className="recipe-list">
-      <h2>Recipes</h2>
-      <ul>{recipeItems}</ul>
-    </div>
+    <>
+      <RecipeForm updateRecipeList={updateRecipeList} />
+      <div>
+        <h2>These recipes are from the api</h2>
+        <ul>
+          {recipes.map((recipe: RecipeItem) => (
+            <Recipe
+              key={recipe.id}
+              name={recipe.name}
+              description={recipe.description}
+              servings={recipe.servings}
+              prepTime={recipe.prepTime}
+              cookTime={recipe.cookTime}
+              sproutyPie={recipe.sproutyPie}
+              lollysPantry={recipe.lollysPantry}
+            />
+          ))}
+        </ul>
+      </div>
+    </>
   );
 }
 

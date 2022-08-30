@@ -1,45 +1,40 @@
 import React from "react";
+import { RecipeItem } from "../types/data";
 import "./recipe.css";
 
-function Recipe() {
-  const testRecipe = {
-    recipeName: "Cole's Roasted Salsa",
-    description:
-      "A delicious spicy salsa made with roasted tomatoes and serrano peppers",
-    servings: 10,
-    prepTime: "20 minutes",
-    cookTime: "10 minutes",
-    sproutyPie: false,
-    lollysPantry: true,
-  };
+function Recipe(props: RecipeItem) {
+  const {
+    name,
+    description,
+    servings,
+    prepTime,
+    cookTime,
+    sproutyPie,
+    lollysPantry,
+  } = props;
   return (
-    <div className="recipe">
-      <hr />
+    <>
       <header className="recipe-header">
-        <h1>{testRecipe.recipeName}</h1>
+        <h3>{name}</h3>
       </header>
       <section>
-        <p>{testRecipe.description}</p>
+        <p>{description}</p>
         <p>
           Servings:&nbsp;
-          {testRecipe.servings}
+          {servings}
         </p>
         <p>
           Prep Time:&nbsp;
-          {testRecipe.prepTime}
+          {prepTime}
         </p>
         <p>
           Cooking Time:&nbsp;
-          {testRecipe.cookTime}
+          {cookTime}
         </p>
-        {testRecipe.sproutyPie ? <p>Official Sprouty Pie recipe</p> : ""}
-        {testRecipe.lollysPantry ? (
-          <p>Official Lolly&apos;s Pantry recipe</p>
-        ) : (
-          ""
-        )}
+        {sproutyPie ? <p>Official Sprouty Pie recipe</p> : ""}
+        {lollysPantry ? <p>Official Lolly&apos;s Pantry recipe</p> : ""}
       </section>
-    </div>
+    </>
   );
 }
 
