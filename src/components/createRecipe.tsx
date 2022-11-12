@@ -8,7 +8,7 @@ function CreateRecipe() {
   const navigate = useNavigate();
   const doSubmit = async (recipe: RecipeItem) => {
     try {
-      // eslint-disable-no-unused-vars
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const response = await axios.post(
         "http://localhost:3000/api/v1/recipes",
         { recipe }
