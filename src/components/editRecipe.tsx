@@ -9,6 +9,7 @@ function EditRecipe() {
   const navigate = useNavigate();
   const doSubmit = async (recipe: RecipeItem) => {
     try {
+      // eslint-disable-no-unused-vars
       const response = await axios.put(
         `http://localhost:3000/api/v1/recipes/${recipeId}`,
         { recipe: { id: recipeId, ...recipe } }
