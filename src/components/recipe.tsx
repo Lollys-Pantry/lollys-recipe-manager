@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React from "react";
 import { RecipeItem } from "../types/data";
 import "./recipe.css";
@@ -7,10 +8,10 @@ function Recipe(props: RecipeItem) {
     name,
     description,
     servings,
-    prepTime,
-    cookTime,
-    sproutyPie,
-    lollysPantry,
+    prep_time,
+    cook_time,
+    sprouty_pie,
+    lollys_pantry,
   } = props;
   return (
     <>
@@ -25,14 +26,14 @@ function Recipe(props: RecipeItem) {
         </p>
         <p>
           Prep Time:&nbsp;
-          {prepTime}
+          {prep_time}
         </p>
         <p>
           Cooking Time:&nbsp;
-          {cookTime}
+          {cook_time}
         </p>
-        {sproutyPie ? <p>Official Sprouty Pie recipe</p> : ""}
-        {lollysPantry ? <p>Official Lolly&apos;s Pantry recipe</p> : ""}
+        {sprouty_pie ? <p>Official Sprouty Pie recipe</p> : ""}
+        {lollys_pantry ? <p>Official Lolly&apos;s Pantry recipe</p> : ""}
       </section>
     </>
   );

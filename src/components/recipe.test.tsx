@@ -6,10 +6,10 @@ const recipeItem = {
   name: "Recipe Name",
   description: "Recipe description",
   servings: 10,
-  prepTime: "10 minutes",
-  cookTime: "20 minutes",
-  sproutyPie: false,
-  lollysPantry: true,
+  prep_time: "10 minutes",
+  cook_time: "20 minutes",
+  sprouty_pie: false,
+  lollys_pantry: true,
 };
 
 describe("when rendered", () => {
@@ -19,10 +19,10 @@ describe("when rendered", () => {
         name={recipeItem.name}
         description={recipeItem.description}
         servings={recipeItem.servings}
-        prepTime={recipeItem.prepTime}
-        cookTime={recipeItem.cookTime}
-        sproutyPie={recipeItem.sproutyPie}
-        lollysPantry={recipeItem.lollysPantry}
+        prep_time={recipeItem.prep_time}
+        cook_time={recipeItem.cook_time}
+        sprouty_pie={recipeItem.sprouty_pie}
+        lollys_pantry={recipeItem.lollys_pantry}
       />
     );
     expect(screen.getByText("Recipe Name")).toBeInTheDocument();

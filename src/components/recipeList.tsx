@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import Recipe from "./recipe";
-import RecipeForm from "./recipeform";
 import { RecipeItem } from "../types/data";
 import "./recipeList.css";
 
@@ -25,18 +26,16 @@ function RecipeList() {
     setUpdate(false);
   }, [isUpdate]);
 
-  const updateRecipeList = (recipe: RecipeItem) => {
-    // eslint-disable-next-line no-underscore-dangle
-    const _recipes = recipes;
-    _recipes.unshift(recipe);
-    setRecipes(_recipes);
-
-    setUpdate(true);
-  };
+  const navigate = useNavigate();
 
   return (
     <>
-      <RecipeForm updateRecipeList={updateRecipeList} />
+      <Button
+        variant="primary"
+        onClick={()=> {navigate("/new-recipe")}}
+      >
+        Add new recipe
+      </Button>
       <div>
         <h2>These recipes are from the api</h2>
         <ul>
@@ -46,10 +45,10 @@ function RecipeList() {
               name={recipe.name}
               description={recipe.description}
               servings={recipe.servings}
-              prepTime={recipe.prepTime}
-              cookTime={recipe.cookTime}
-              sproutyPie={recipe.sproutyPie}
-              lollysPantry={recipe.lollysPantry}
+              prep_time={recipe.prep_time}
+              cook_time={recipe.cook_time}
+              sprouty_pie={recipe.sprouty_pie}
+              lollys_pantry={recipe.lollys_pantry}
             />
           ))}
         </ul>
@@ -59,3 +58,14 @@ function RecipeList() {
 }
 
 export default RecipeList;
+
+
+// THIS UPDATED THE RECIPE LIST WHEN FORM WAS ON THE SAME PAGE
+// const updateRecipeList = (recipe: RecipeItem) => {
+//   // eslint-disable-next-line no-underscore-dangle
+//   const _recipes = recipes;
+//   _recipes.unshift(recipe);
+//   setRecipes(_recipes);
+
+//   setUpdate(true);
+// };
