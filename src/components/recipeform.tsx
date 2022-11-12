@@ -1,28 +1,25 @@
 /* eslint-disable camelcase */
 /* eslint-disable react/react-in-jsx-scope */
-import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 import { RecipeItem } from "../types/data";
 
-function RecipeForm() {
-  const [name, setName] = useState<string>("");
-  const [description, setDescription] = useState<string>("");
-  const [servings, setServings] = useState<number>(1);
-  const [prep_time, setPrepTime] = useState<string>("");
-  const [cook_time, setCookTime] = useState<string>("");
-  const [lollys_pantry, setLollysPantry] = useState<boolean>(false);
-  const [sprouty_pie, setSproutyPie] = useState<boolean>(false);
+function RecipeForm(props:{ defaults: RecipeItem, doSubmit: (recipe: RecipeItem) => Promise <void> }) {
+  const {defaults, doSubmit} = props;
+  const [name, setName] = useState<string>(defaults.name);
+  const [description, setDescription] = useState<string>(defaults.description);
+  const [servings, setServings] = useState<number>(defaults.servings);
+  const [prep_time, setPrepTime] = useState<string>(defaults.prep_time);
+  const [cook_time, setCookTime] = useState<string>(defaults.cook_time);
+  const [lollys_pantry, setLollysPantry] = useState<boolean>(defaults.lollys_pantry);
+  const [sprouty_pie, setSproutyPie] = useState<boolean>(defaults.sprouty_pie);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
-  const navigate = useNavigate();
   
   const onSubmit = async () => {
     const recipeData: RecipeItem = {
@@ -35,19 +32,10 @@ function RecipeForm() {
       lollys_pantry,
     };
 
-    try {
-      const response = await axios.post(
-        "http://localhost:3000/api/v1/recipes",
-        { recipe: recipeData }
-      );
+    doSubmit(recipeData);
 
-      // updateRecipeList(response.data);
-    } catch (error: unknown) {
-      // eslint-disable-next-line no-console
-      console.log(error);
-    }
-    navigate("/")
   };
+
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
@@ -58,6 +46,7 @@ function RecipeForm() {
           {...register("name", { required: true })}
           type="text"
           name="name"
+          defaultValue={defaults.name}
           onChange={(e) => setName(e.target.value)}
         />
         {errors?.title?.type === "required" && <p>This field is required</p>}
@@ -70,6 +59,7 @@ function RecipeForm() {
           {...register("description", { required: false })}
           type="text"
           name="description"
+          defaultValue={defaults.description}
           onChange={(e) => setDescription(e.target.value)}
         />
       </Form.Group>
@@ -81,6 +71,7 @@ function RecipeForm() {
           {...register("servings", { required: false })}
           type="text"
           name="servings"
+          defaultValue={defaults.servings}
           onChange={(e) => setServings(parseInt(e.target.value, 10))}
         />
       </Form.Group>
@@ -92,6 +83,7 @@ function RecipeForm() {
           {...register("prep_time", { required: false })}
           type="text"
           name="prepTime"
+          defaultValue={defaults.prep_time}
           onChange={(e) => setPrepTime(e.target.value)}
         />
       </Form.Group>
@@ -103,6 +95,7 @@ function RecipeForm() {
           {...register("cook_time", { required: false })}
           type="text"
           name="cookTime"
+          defaultValue={defaults.cook_time}
           onChange={(e) => setCookTime(e.target.value)}
         />
       </Form.Group>
@@ -113,6 +106,7 @@ function RecipeForm() {
         type="checkbox"
         id="lollysPantry"
         label="Official Lolly's Pantry Recipe"
+        defaultValue={`${defaults.lollys_pantry}`}
         onChange={e => setLollysPantry(e.target.checked)}
       />
       
@@ -122,6 +116,7 @@ function RecipeForm() {
         type="checkbox"
         id="sproutyPie"
         label="Official Sprouty Pie Recipe"
+        defaultValue={`${defaults.sprouty_pie}`}
         onChange={e => setSproutyPie(e.target.checked)}
       />
 
