@@ -4,7 +4,8 @@ import { Container } from "react-bootstrap";
 import logo from "./img/LP_Retro_Logo.jpg";
 import RecipeList from "./components/recipeList";
 import "./App.css";
-import RecipeForm from "./components/recipeform";
+import CreateRecipe from "./components/createRecipe";
+import EditRecipe from "./components/editRecipe";
 
 function App() {
   return (
@@ -24,8 +25,8 @@ function App() {
 
         <Routes>
           <Route path="/" element={<RecipeList />} />
-          <Route path="/new-recipe" element={<RecipeForm />} />
-          {/* <Route path="/recipe/:recipeId" element={<Recipe />} /> */}
+          <Route path="/new-recipe" element={<CreateRecipe />} />
+          <Route path="/recipe/:recipeId" element={<EditRecipe />} />
         </Routes>
       </Container>
     </Router>

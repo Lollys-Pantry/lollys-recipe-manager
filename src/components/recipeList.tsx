@@ -37,11 +37,11 @@ function RecipeList() {
         Add new recipe
       </Button>
       <div>
-        <h2>These recipes are from the api</h2>
         <ul>
           {recipes.map((recipe: RecipeItem) => (
             <Recipe
               key={recipe.id}
+              id={recipe.id}
               name={recipe.name}
               description={recipe.description}
               servings={recipe.servings}
