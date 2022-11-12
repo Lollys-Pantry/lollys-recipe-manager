@@ -38,11 +38,9 @@ import RecipeList from "./recipeList";
 // ];
 
 describe("when rendered", () => {
-  it("should have the recipe title", () => {
+  it("should have the create recipe button", () => {
     render(<RecipeList />, { wrapper: MemoryRouter });
-    expect(
-      screen.getByText("These recipes are from the api")
-    ).toBeInTheDocument();
+    expect(screen.getByText("Add new recipe")).toBeInTheDocument();
     // expect(screen.getByText("Tofu Rice Bowls")).toBeInTheDocument();
   });
 });

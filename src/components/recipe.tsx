@@ -43,7 +43,9 @@ function Recipe(props: RecipeItem) {
       </section>
       <Button
         variant="primary"
-        onClick={()=> { console.log(props); navigate(`/recipe/${id}`)}}
+        onClick={() => {
+          navigate(`/recipe/${id}`);
+        }}
       >
         Edit Recipe
       </Button>

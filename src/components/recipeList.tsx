@@ -32,7 +32,9 @@ function RecipeList() {
     <>
       <Button
         variant="primary"
-        onClick={()=> {navigate("/new-recipe")}}
+        onClick={() => {
+          navigate("/new-recipe");
+        }}
       >
         Add new recipe
       </Button>
@@ -58,14 +60,3 @@ function RecipeList() {
 }
 
 export default RecipeList;
-
-
-// THIS UPDATED THE RECIPE LIST WHEN FORM WAS ON THE SAME PAGE
-// const updateRecipeList = (recipe: RecipeItem) => {
-//   // eslint-disable-next-line no-underscore-dangle
-//   const _recipes = recipes;
-//   _recipes.unshift(recipe);
-//   setRecipes(_recipes);
-
-//   setUpdate(true);
-// };

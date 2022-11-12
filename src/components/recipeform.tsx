@@ -5,14 +5,19 @@ import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { RecipeItem } from "../types/data";
 
-function RecipeForm(props:{ defaults: RecipeItem, doSubmit: (recipe: RecipeItem) => Promise <void> }) {
-  const {defaults, doSubmit} = props;
+function RecipeForm(props: {
+  defaults: RecipeItem;
+  doSubmit: (recipe: RecipeItem) => Promise<void>;
+}) {
+  const { defaults, doSubmit } = props;
   const [name, setName] = useState<string>(defaults.name);
   const [description, setDescription] = useState<string>(defaults.description);
   const [servings, setServings] = useState<number>(defaults.servings);
   const [prep_time, setPrepTime] = useState<string>(defaults.prep_time);
   const [cook_time, setCookTime] = useState<string>(defaults.cook_time);
-  const [lollys_pantry, setLollysPantry] = useState<boolean>(defaults.lollys_pantry);
+  const [lollys_pantry, setLollysPantry] = useState<boolean>(
+    defaults.lollys_pantry
+  );
   const [sprouty_pie, setSproutyPie] = useState<boolean>(defaults.sprouty_pie);
 
   const {
@@ -20,7 +25,7 @@ function RecipeForm(props:{ defaults: RecipeItem, doSubmit: (recipe: RecipeItem)
     handleSubmit,
     formState: { errors },
   } = useForm();
-  
+
   const onSubmit = async () => {
     const recipeData: RecipeItem = {
       name,
@@ -33,9 +38,7 @@ function RecipeForm(props:{ defaults: RecipeItem, doSubmit: (recipe: RecipeItem)
     };
 
     doSubmit(recipeData);
-
   };
-
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
@@ -101,23 +104,23 @@ function RecipeForm(props:{ defaults: RecipeItem, doSubmit: (recipe: RecipeItem)
       </Form.Group>
 
       <Form.Check
-      // eslint-disable-next-line react/jsx-props-no-spreading
-      {...register("lollys_pantry", { required: false })}
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        {...register("lollys_pantry", { required: false })}
         type="checkbox"
         id="lollysPantry"
         label="Official Lolly's Pantry Recipe"
         defaultValue={`${defaults.lollys_pantry}`}
-        onChange={e => setLollysPantry(e.target.checked)}
+        onChange={(e) => setLollysPantry(e.target.checked)}
       />
-      
+
       <Form.Check
-      // eslint-disable-next-line react/jsx-props-no-spreading
-      {...register("sprouty_pie", { required: false })}
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        {...register("sprouty_pie", { required: false })}
         type="checkbox"
         id="sproutyPie"
         label="Official Sprouty Pie Recipe"
         defaultValue={`${defaults.sprouty_pie}`}
-        onChange={e => setSproutyPie(e.target.checked)}
+        onChange={(e) => setSproutyPie(e.target.checked)}
       />
 
       <br />

@@ -1,26 +1,27 @@
 import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import RecipeForm from "./recipeform"
+import RecipeForm from "./recipeform";
 import { RecipeItem } from "../types/data";
 
 function CreateRecipe() {
   const navigate = useNavigate();
-  const doSubmit = async(recipe:RecipeItem) => {
+  const doSubmit = async (recipe: RecipeItem) => {
     try {
       const response = await axios.post(
         "http://localhost:3000/api/v1/recipes",
         { recipe }
       );
-        } catch (error: unknown) {
+    } catch (error: unknown) {
       // eslint-disable-next-line no-console
       console.log(error);
     }
-    navigate("/")
-  }
-  
+    navigate("/");
+  };
+
   return (
-      <RecipeForm defaults={{
+    <RecipeForm
+      defaults={{
         name: "",
         description: "",
         servings: 1,
@@ -29,7 +30,8 @@ function CreateRecipe() {
         sprouty_pie: false,
         lollys_pantry: false,
       }}
-      doSubmit={doSubmit} />
+      doSubmit={doSubmit}
+    />
   );
 }
 
