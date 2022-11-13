@@ -3,8 +3,8 @@ export interface RecipeItem {
   name: string;
   description: string;
   servings: number;
-  prepTime: string;
-  cookTime: string;
-  sproutyPie: boolean;
-  lollysPantry: boolean;
+  prep_time: string;
+  cook_time: string;
+  sprouty_pie: boolean;
+  lollys_pantry: boolean;
 }
