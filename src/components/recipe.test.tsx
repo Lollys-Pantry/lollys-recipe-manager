@@ -32,11 +32,5 @@ describe("when rendered", () => {
     );
     expect(screen.getByText("Recipe Name")).toBeInTheDocument();
     expect(screen.getByText("Recipe description")).toBeInTheDocument();
-    expect(screen.getByText("Servings: 10")).toBeInTheDocument();
-    expect(screen.getByText("Prep Time: 10 minutes")).toBeInTheDocument();
-    expect(screen.getByText("Cooking Time: 20 minutes")).toBeInTheDocument();
-    expect(
-      screen.getByText("Official Lolly's Pantry recipe")
-    ).toBeInTheDocument();
   });
 });

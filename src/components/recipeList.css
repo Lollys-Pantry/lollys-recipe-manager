@@ -3,9 +3,13 @@ h2 {
   color: #4d4d4d;
 }
 
-ul > li {
+td, th {
   color: #4d4d4d;
-  font-size: calc(10px + 1vmin);
+  font-size: calc(16px);
   list-style-type: none;
   line-height: 2;
+}
+
+Table {
+  margin-top: 20px;
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Button } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import Recipe from "./recipe";
 import { RecipeItem } from "../types/data";
@@ -31,15 +31,21 @@ function RecipeList() {
   return (
     <>
       <Button
-        variant="primary"
+        variant="info"
         onClick={() => {
           navigate("/new-recipe");
         }}
       >
         Add new recipe
       </Button>
-      <div>
-        <ul>
+      <Table striped bordered hover size="sm">
+        <thead>
+          <tr>
+            <th>Recipe</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
           {recipes.map((recipe: RecipeItem) => (
             <Recipe
               key={recipe.id}
@@ -53,8 +59,8 @@ function RecipeList() {
               lollys_pantry={recipe.lollys_pantry}
             />
           ))}
-        </ul>
-      </div>
+        </tbody>
+      </Table>
     </>
   );
 }

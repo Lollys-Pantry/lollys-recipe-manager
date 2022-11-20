@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable camelcase */
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -20,36 +21,24 @@ function Recipe(props: RecipeItem) {
   const navigate = useNavigate();
 
   return (
-    <>
-      <header className="recipe-header">
-        <h3>{name}</h3>
-      </header>
-      <section>
-        <p>{description}</p>
-        <p>
-          Servings:&nbsp;
-          {servings}
-        </p>
-        <p>
-          Prep Time:&nbsp;
-          {prep_time}
-        </p>
-        <p>
-          Cooking Time:&nbsp;
-          {cook_time}
-        </p>
-        {sprouty_pie ? <p>Official Sprouty Pie recipe</p> : ""}
-        {lollys_pantry ? <p>Official Lolly&apos;s Pantry recipe</p> : ""}
-      </section>
-      <Button
-        variant="primary"
-        onClick={() => {
-          navigate(`/recipe/${id}`);
-        }}
-      >
-        Edit Recipe
-      </Button>
-    </>
+    <tr>
+      <td>
+        <strong>{name}</strong>
+        <br />
+        {description}
+      </td>
+      <td>
+        <Button
+          variant="outline-info"
+          size="sm"
+          onClick={() => {
+            navigate(`/recipe/${id}`);
+          }}
+        >
+          Edit Recipe
+        </Button>
+      </td>
+    </tr>
   );
 }
 

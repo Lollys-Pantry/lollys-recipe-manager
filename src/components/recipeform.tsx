@@ -126,7 +126,7 @@ function RecipeForm(props: {
       <br />
 
       <Button variant="primary" type="submit">
-        Submit
+        Save
       </Button>
       <hr />
     </Form>
