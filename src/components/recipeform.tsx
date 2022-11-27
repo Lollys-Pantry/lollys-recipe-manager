@@ -11,6 +11,7 @@ function RecipeForm(props: {
 }) {
   const { defaults, doSubmit } = props;
   const [name, setName] = useState<string>(defaults.name);
+  const [image, setImage] = useState<unknown>(defaults.image);
   const [description, setDescription] = useState<string>(defaults.description);
   const [servings, setServings] = useState<number>(defaults.servings);
   const [prep_time, setPrepTime] = useState<string>(defaults.prep_time);
@@ -35,6 +36,7 @@ function RecipeForm(props: {
       cook_time,
       sprouty_pie,
       lollys_pantry,
+      image,
     };
 
     doSubmit(recipeData);
@@ -53,6 +55,18 @@ function RecipeForm(props: {
           onChange={(e) => setName(e.target.value)}
         />
         {errors?.title?.type === "required" && <p>This field is required</p>}
+      </Form.Group>
+
+      <Form.Group>
+        <Form.Label>Image</Form.Label>
+        <Form.Control 
+        // eslint-disable-next-line react/jsx-props-no-spreading
+          {...register("image", { required: false })}
+          type="file"
+          name="image"
+          accept="image/*"
+          onChange={(e) => setImage(e.target.value)}
+        />
       </Form.Group>
 
       <Form.Group>
