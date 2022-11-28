@@ -7,6 +7,7 @@ const recipeItem = {
   id: 1,
   name: "Recipe Name",
   description: "Recipe description",
+  image: "test",
   servings: 10,
   prep_time: "10 minutes",
   cook_time: "20 minutes",
@@ -21,6 +22,7 @@ describe("when rendered", () => {
         <Recipe
           id={recipeItem.id}
           name={recipeItem.name}
+          image={recipeItem.image}
           description={recipeItem.description}
           servings={recipeItem.servings}
           prep_time={recipeItem.prep_time}

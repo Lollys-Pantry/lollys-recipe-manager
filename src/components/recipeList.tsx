@@ -51,6 +51,7 @@ function RecipeList() {
               key={recipe.id}
               id={recipe.id}
               name={recipe.name}
+              image={recipe.image}
               description={recipe.description}
               servings={recipe.servings}
               prep_time={recipe.prep_time}

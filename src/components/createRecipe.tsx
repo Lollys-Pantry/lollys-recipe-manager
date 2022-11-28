@@ -25,6 +25,7 @@ function CreateRecipe() {
       defaults={{
         name: "",
         description: "",
+        image: undefined,
         servings: 1,
         prep_time: "",
         cook_time: "",

@@ -7,4 +7,5 @@ export interface RecipeItem {
   cook_time: string;
   sprouty_pie: boolean;
   lollys_pantry: boolean;
+  image: unknown;
 }
