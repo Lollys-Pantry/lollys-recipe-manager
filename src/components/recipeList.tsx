@@ -57,6 +57,8 @@ function RecipeList() {
               cook_time={recipe.cook_time}
               sprouty_pie={recipe.sprouty_pie}
               lollys_pantry={recipe.lollys_pantry}
+              ingredients={recipe.ingredients}
+              ingredients_attributes={recipe.ingredients_attributes}
             />
           ))}
         </tbody>

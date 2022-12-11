@@ -30,6 +30,8 @@ function CreateRecipe() {
         cook_time: "",
         sprouty_pie: false,
         lollys_pantry: false,
+        ingredients_attributes: {},
+        ingredients: {},
       }}
       doSubmit={doSubmit}
     />
