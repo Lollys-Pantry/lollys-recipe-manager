@@ -13,7 +13,7 @@ const recipeItem = {
   sprouty_pie: false,
   lollys_pantry: true,
   ingredients: {},
-  ingredients_attributes: {}
+  ingredients_attributes: {},
 };
 
 describe("when rendered", () => {

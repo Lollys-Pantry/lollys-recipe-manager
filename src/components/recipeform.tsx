@@ -22,10 +22,10 @@ function RecipeForm(props: {
     defaultValues: defaults as any,
   });
 
-  const {
-    fields: ingredients,
-    append,
-  } = useFieldArray({ control, name: "ingredients" });
+  const { fields: ingredients, append } = useFieldArray({
+    control,
+    name: "ingredients",
+  });
 
   const onSubmit = async (formData: unknown) => {
     const recipeData = formData as RecipeItem;
@@ -39,10 +39,7 @@ function RecipeForm(props: {
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Form.Group>
         <Form.Label>Name</Form.Label>
-        <Form.Control
-          {...register("name", { required: true })}
-          type="text"
-        />
+        <Form.Control {...register("name", { required: true })} type="text" />
         {errors?.title?.type === "required" && <p>This field is required</p>}
       </Form.Group>
 
@@ -58,9 +55,11 @@ function RecipeForm(props: {
         {ingredients.map((ingredient, index) => {
           const idPrefix = `ingredients.${index}.`;
           return (
-            <fieldset key={ingredient.id} >
-              <Form.Group as={Row} className="mb-3" >
-                <Form.Label column sm={2}>Quantity</Form.Label>
+            <fieldset key={ingredient.id}>
+              <Form.Group as={Row} className="mb-3">
+                <Form.Label column sm={2}>
+                  Quantity
+                </Form.Label>
                 <Col sm={10}>
                   <Form.Control
                     type="text"
@@ -68,8 +67,10 @@ function RecipeForm(props: {
                   />
                 </Col>
               </Form.Group>
-              <Form.Group as={Row} className="mb-3" >
-                <Form.Label column sm={2}>Measurement</Form.Label>
+              <Form.Group as={Row} className="mb-3">
+                <Form.Label column sm={2}>
+                  Measurement
+                </Form.Label>
                 <Col sm={10}>
                   <Form.Control
                     type="text"
@@ -77,17 +78,18 @@ function RecipeForm(props: {
                   />
                 </Col>
               </Form.Group>
-              <Form.Group as={Row} className="mb-3" >
-                <Form.Label column sm={2}>Name</Form.Label>
+              <Form.Group as={Row} className="mb-3">
+                <Form.Label column sm={2}>
+                  Name
+                </Form.Label>
                 <Col sm={10}>
-                  <Form.Control
-                    type="text"
-                    {...register(`${idPrefix}name`)}
-                  />
+                  <Form.Control type="text" {...register(`${idPrefix}name`)} />
                 </Col>
               </Form.Group>
-              <Form.Group as={Row} className="mb-3" >
-                <Form.Label column sm={2}>Preparation</Form.Label>
+              <Form.Group as={Row} className="mb-3">
+                <Form.Label column sm={2}>
+                  Preparation
+                </Form.Label>
                 <Col sm={10}>
                   <Form.Control
                     type="text"
