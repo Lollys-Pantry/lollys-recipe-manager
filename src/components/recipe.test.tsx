@@ -12,6 +12,8 @@ const recipeItem = {
   cook_time: "20 minutes",
   sprouty_pie: false,
   lollys_pantry: true,
+  ingredients: {},
+  ingredients_attributes: {},
 };
 
 describe("when rendered", () => {
@@ -27,6 +29,8 @@ describe("when rendered", () => {
           cook_time={recipeItem.cook_time}
           sprouty_pie={recipeItem.sprouty_pie}
           lollys_pantry={recipeItem.lollys_pantry}
+          ingredients={recipeItem.ingredients}
+          ingredients_attributes={recipeItem.ingredients_attributes}
         />
       </Router>
     );
