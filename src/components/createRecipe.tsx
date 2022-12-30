@@ -32,6 +32,8 @@ function CreateRecipe() {
         lollys_pantry: false,
         ingredients_attributes: {},
         ingredients: {},
+        nutritional_labels_attributes: {},
+        nutritional_labels: {},
       }}
       doSubmit={doSubmit}
     />

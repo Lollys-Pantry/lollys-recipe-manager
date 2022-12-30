@@ -14,6 +14,8 @@ const recipeItem = {
   lollys_pantry: true,
   ingredients: {},
   ingredients_attributes: {},
+  nutritional_labels: {},
+  nutritional_labels_attributes: {},
 };
 
 describe("when rendered", () => {
@@ -31,6 +33,10 @@ describe("when rendered", () => {
           lollys_pantry={recipeItem.lollys_pantry}
           ingredients={recipeItem.ingredients}
           ingredients_attributes={recipeItem.ingredients_attributes}
+          nutritional_labels={recipeItem.nutritional_labels}
+          nutritional_labels_attributes={
+            recipeItem.nutritional_labels_attributes
+          }
         />
       </Router>
     );
