@@ -59,6 +59,10 @@ function RecipeList() {
               lollys_pantry={recipe.lollys_pantry}
               ingredients={recipe.ingredients}
               ingredients_attributes={recipe.ingredients_attributes}
+              nutritional_labels={recipe.nutritional_labels}
+              nutritional_labels_attributes={
+                recipe.nutritional_labels_attributes
+              }
             />
           ))}
         </tbody>

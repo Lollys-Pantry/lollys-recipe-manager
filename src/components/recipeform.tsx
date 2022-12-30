@@ -22,16 +22,24 @@ function RecipeForm(props: {
     defaultValues: defaults as any,
   });
 
-  const { fields: ingredients, append } = useFieldArray({
-    control,
-    name: "ingredients",
-  });
+  const {
+    fields: ingredients,
+    append: ingredientsAppend,
+    remove: ingredientsRemove,
+  } = useFieldArray({ control, name: "ingredients" });
+  const {
+    fields: nutritionalLabels,
+    append: nutritionalLabelsAppend,
+    remove: nutritionalLabelsRemove,
+  } = useFieldArray({ control, name: "nutritional_labels" });
 
   const onSubmit = async (formData: unknown) => {
     const recipeData = formData as RecipeItem;
     // eslint-disable-next-line no-debugger
     recipeData.ingredients_attributes = recipeData.ingredients;
     delete recipeData.ingredients;
+    recipeData.nutritional_labels_attributes = recipeData.nutritional_labels;
+    delete recipeData.nutritional_labels;
     doSubmit(recipeData);
   };
 
@@ -97,6 +105,9 @@ function RecipeForm(props: {
                   />
                 </Col>
               </Form.Group>
+              <button type="button" onClick={() => ingredientsRemove(index)}>
+                Delete ingredient
+              </button>
             </fieldset>
           );
         })}
@@ -105,7 +116,7 @@ function RecipeForm(props: {
           size="sm"
           className="ingredient-button"
           onClick={() =>
-            append({
+            ingredientsAppend({
               quantity: 0,
               measurement: "",
               name: "",
@@ -114,6 +125,135 @@ function RecipeForm(props: {
           }
         >
           Add ingredient
+        </Button>
+      </div>
+
+      <div className="nutritional-labels-fields">
+        {nutritionalLabels.map((nutritionalLabel, index) => {
+          const idPrefix = `nutritional_labels.${index}.`;
+          return (
+            <fieldset key={nutritionalLabel.id}>
+              <Form.Group as={Row} className="mb-3">
+                <Form.Label column sm={2}>
+                  Serving Size
+                </Form.Label>
+                <Col sm={10}>
+                  <Form.Control
+                    type="text"
+                    {...register(`${idPrefix}serving_size`)}
+                  />
+                </Col>
+              </Form.Group>
+              <Form.Group as={Row} className="mb-3">
+                <Form.Label column sm={2}>
+                  Calories
+                </Form.Label>
+                <Col sm={10}>
+                  <Form.Control
+                    type="text"
+                    {...register(`${idPrefix}calories`)}
+                  />
+                </Col>
+              </Form.Group>
+              <Form.Group as={Row} className="mb-3">
+                <Form.Label column sm={2}>
+                  Total Fat
+                </Form.Label>
+                <Col sm={10}>
+                  <Form.Control
+                    type="text"
+                    {...register(`${idPrefix}total_fat`)}
+                  />
+                </Col>
+              </Form.Group>
+              <Form.Group as={Row} className="mb-3">
+                <Form.Label column sm={2}>
+                  Saturated Fat
+                </Form.Label>
+                <Col sm={10}>
+                  <Form.Control
+                    type="text"
+                    {...register(`${idPrefix}saturated_fat`)}
+                  />
+                </Col>
+              </Form.Group>
+              <Form.Group as={Row} className="mb-3">
+                <Form.Label column sm={2}>
+                  Sodium
+                </Form.Label>
+                <Col sm={10}>
+                  <Form.Control
+                    type="text"
+                    {...register(`${idPrefix}sodium`)}
+                  />
+                </Col>
+              </Form.Group>
+              <Form.Group as={Row} className="mb-3">
+                <Form.Label column sm={2}>
+                  Carbohydrates
+                </Form.Label>
+                <Col sm={10}>
+                  <Form.Control
+                    type="text"
+                    {...register(`${idPrefix}carbohydrates`)}
+                  />
+                </Col>
+              </Form.Group>
+              <Form.Group as={Row} className="mb-3">
+                <Form.Label column sm={2}>
+                  Fiber
+                </Form.Label>
+                <Col sm={10}>
+                  <Form.Control type="text" {...register(`${idPrefix}fiber`)} />
+                </Col>
+              </Form.Group>
+              <Form.Group as={Row} className="mb-3">
+                <Form.Label column sm={2}>
+                  Sugar
+                </Form.Label>
+                <Col sm={10}>
+                  <Form.Control type="text" {...register(`${idPrefix}sugar`)} />
+                </Col>
+              </Form.Group>
+              <Form.Group as={Row} className="mb-3">
+                <Form.Label column sm={2}>
+                  Protein
+                </Form.Label>
+                <Col sm={10}>
+                  <Form.Control
+                    type="text"
+                    {...register(`${idPrefix}protein`)}
+                  />
+                </Col>
+              </Form.Group>
+              <button
+                type="button"
+                onClick={() => nutritionalLabelsRemove(index)}
+              >
+                Delete
+              </button>
+            </fieldset>
+          );
+        })}
+        <Button
+          variant="outline-info"
+          size="sm"
+          className="nutrition-button"
+          onClick={() =>
+            nutritionalLabelsAppend({
+              serving_size: "",
+              calories: "",
+              total_fat: "",
+              saturated_fat: "",
+              sodium: "",
+              carbohydrates: "",
+              fiber: "",
+              sugar: "",
+              protein: "",
+            })
+          }
+        >
+          Add nutritional information
         </Button>
       </div>
 

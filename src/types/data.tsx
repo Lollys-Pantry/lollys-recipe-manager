@@ -1,6 +1,8 @@
 export interface RecipeItem {
   ingredients_attributes: unknown;
   ingredients: unknown;
+  nutritional_labels_attributes: unknown;
+  nutritional_labels: unknown;
   id?: number;
   name: string;
   description: string;
@@ -17,5 +19,19 @@ export interface Ingredient {
   measurement: string;
   name: string;
   preparation: string;
+  recipe_id: number;
+}
+
+export interface NutritionalLabel {
+  id?: number;
+  serving_size: string;
+  calories: string;
+  total_fat: string;
+  saturated_fat: string;
+  sodium: string;
+  carbohydrates: string;
+  fiber: string;
+  sugar: string;
+  protein: string;
   recipe_id: number;
 }
