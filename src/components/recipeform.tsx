@@ -27,10 +27,8 @@ function RecipeForm(props: {
     append: ingredientsAppend,
     remove: ingredientsRemove,
   } = useFieldArray({ control, name: "ingredients" });
-  const {
-    fields: nutritionalLabels,
-    append: nutritionalLabelsAppend,
-  } = useFieldArray({ control, name: "nutritional_labels" });
+  const { fields: nutritionalLabels, append: nutritionalLabelsAppend } =
+    useFieldArray({ control, name: "nutritional_labels" });
 
   const onSubmit = async (formData: unknown) => {
     const recipeData = formData as RecipeItem;
@@ -126,7 +124,7 @@ function RecipeForm(props: {
           Add ingredient
         </Button>
       </div>
-      
+
       <div className="nutritional-labels-fields">
         {nutritionalLabels.map((nutritionalLabel, index) => {
           const idPrefix = `nutritional_labels.${index}.`;
@@ -228,7 +226,7 @@ function RecipeForm(props: {
             </fieldset>
           );
         })}
-        { Object.keys(nutritionalLabels).length === 0 &&
+        {Object.keys(nutritionalLabels).length === 0 && (
           <Button
             variant="outline-info"
             size="sm"
@@ -249,8 +247,8 @@ function RecipeForm(props: {
           >
             Add nutritional information
           </Button>
-        }
-        </div>
+        )}
+      </div>
 
       <Form.Group>
         <Form.Label>Servings</Form.Label>
