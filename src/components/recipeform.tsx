@@ -30,7 +30,6 @@ function RecipeForm(props: {
   const {
     fields: nutritionalLabels,
     append: nutritionalLabelsAppend,
-    remove: nutritionalLabelsRemove,
   } = useFieldArray({ control, name: "nutritional_labels" });
 
   const onSubmit = async (formData: unknown) => {
@@ -127,7 +126,7 @@ function RecipeForm(props: {
           Add ingredient
         </Button>
       </div>
-
+      
       <div className="nutritional-labels-fields">
         {nutritionalLabels.map((nutritionalLabel, index) => {
           const idPrefix = `nutritional_labels.${index}.`;
@@ -226,36 +225,32 @@ function RecipeForm(props: {
                   />
                 </Col>
               </Form.Group>
-              <button
-                type="button"
-                onClick={() => nutritionalLabelsRemove(index)}
-              >
-                Delete
-              </button>
             </fieldset>
           );
         })}
-        <Button
-          variant="outline-info"
-          size="sm"
-          className="nutrition-button"
-          onClick={() =>
-            nutritionalLabelsAppend({
-              serving_size: "",
-              calories: "",
-              total_fat: "",
-              saturated_fat: "",
-              sodium: "",
-              carbohydrates: "",
-              fiber: "",
-              sugar: "",
-              protein: "",
-            })
-          }
-        >
-          Add nutritional information
-        </Button>
-      </div>
+        { Object.keys(nutritionalLabels).length === 0 &&
+          <Button
+            variant="outline-info"
+            size="sm"
+            className="nutrition-button"
+            onClick={() =>
+              nutritionalLabelsAppend({
+                serving_size: "",
+                calories: "",
+                total_fat: "",
+                saturated_fat: "",
+                sodium: "",
+                carbohydrates: "",
+                fiber: "",
+                sugar: "",
+                protein: "",
+              })
+            }
+          >
+            Add nutritional information
+          </Button>
+        }
+        </div>
 
       <Form.Group>
         <Form.Label>Servings</Form.Label>
