@@ -40,9 +40,7 @@ describe("when rendered", () => {
             recipeItem.nutritional_labels_attributes
           }
           cooking_steps={recipeItem.cooking_steps}
-          cooking_steps_attributes={
-            recipeItem.cooking_steps_attributes
-          }
+          cooking_steps_attributes={recipeItem.cooking_steps_attributes}
         />
       </Router>
     );

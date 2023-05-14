@@ -29,10 +29,10 @@ function RecipeForm(props: {
   } = useFieldArray({ control, name: "ingredients" });
   const { fields: nutritionalLabels, append: nutritionalLabelsAppend } =
     useFieldArray({ control, name: "nutritional_labels" });
-  const { 
+  const {
     fields: cookingSteps,
     append: cookingStepsAppend,
-    remove: cookingStepsRemove
+    remove: cookingStepsRemove,
   } = useFieldArray({ control, name: "cooking_steps" });
 
   const onSubmit = async (formData: unknown) => {
@@ -267,10 +267,7 @@ function RecipeForm(props: {
                   Step Number
                 </Form.Label>
                 <Col sm={10}>
-                  <Form.Control
-                    type="text"
-                    {...register(`${idPrefix}step`)}
-                  />
+                  <Form.Control type="text" {...register(`${idPrefix}step`)} />
                 </Col>
               </Form.Group>
               <Form.Group as={Row} className="mb-3">

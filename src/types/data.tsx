@@ -1,6 +1,6 @@
 export interface RecipeItem {
   ingredients_attributes: unknown;
-  ingredients: unknown; 
+  ingredients: unknown;
   nutritional_labels_attributes: unknown;
   nutritional_labels: unknown;
   cooking_steps: unknown;
