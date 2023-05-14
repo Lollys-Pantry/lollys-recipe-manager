@@ -29,6 +29,11 @@ function RecipeForm(props: {
   } = useFieldArray({ control, name: "ingredients" });
   const { fields: nutritionalLabels, append: nutritionalLabelsAppend } =
     useFieldArray({ control, name: "nutritional_labels" });
+  const { 
+    fields: cookingSteps,
+    append: cookingStepsAppend,
+    remove: cookingStepsRemove
+  } = useFieldArray({ control, name: "cooking_steps" });
 
   const onSubmit = async (formData: unknown) => {
     const recipeData = formData as RecipeItem;
@@ -37,6 +42,8 @@ function RecipeForm(props: {
     delete recipeData.ingredients;
     recipeData.nutritional_labels_attributes = recipeData.nutritional_labels;
     delete recipeData.nutritional_labels;
+    recipeData.cooking_steps_attributes = recipeData.cooking_steps;
+    delete recipeData.cooking_steps;
     doSubmit(recipeData);
   };
 
@@ -246,6 +253,69 @@ function RecipeForm(props: {
             }
           >
             Add nutritional information
+          </Button>
+        )}
+      </div>
+
+      <div className="cooking-steps-fields">
+        {cookingSteps.map((cookingstep, index) => {
+          const idPrefix = `cooking_steps.${index}.`;
+          return (
+            <fieldset key={cookingstep.id}>
+              <Form.Group as={Row} className="mb-3">
+                <Form.Label column sm={2}>
+                  Step Number
+                </Form.Label>
+                <Col sm={10}>
+                  <Form.Control
+                    type="text"
+                    {...register(`${idPrefix}step`)}
+                  />
+                </Col>
+              </Form.Group>
+              <Form.Group as={Row} className="mb-3">
+                <Form.Label column sm={2}>
+                  Description
+                </Form.Label>
+                <Col sm={10}>
+                  <Form.Control
+                    type="text"
+                    {...register(`${idPrefix}description`)}
+                  />
+                </Col>
+              </Form.Group>
+              <button type="button" onClick={() => cookingStepsRemove(index)}>
+                Delete cooking step
+              </button>
+            </fieldset>
+          );
+        })}
+        <Button
+          variant="outline-info"
+          size="sm"
+          className="cookingstep-button"
+          onClick={() =>
+            cookingStepsAppend({
+              step: 0,
+              description: "",
+            })
+          }
+        >
+          Add cooking step
+        </Button>
+        {Object.keys(cookingSteps).length === 0 && (
+          <Button
+            variant="outline-info"
+            size="sm"
+            className="cooking-steps-button"
+            onClick={() =>
+              cookingStepsAppend({
+                step: "",
+                description: "",
+              })
+            }
+          >
+            Add cooking step
           </Button>
         )}
       </div>

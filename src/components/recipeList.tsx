@@ -63,6 +63,8 @@ function RecipeList() {
               nutritional_labels_attributes={
                 recipe.nutritional_labels_attributes
               }
+              cooking_steps={recipe.cooking_steps}
+              cooking_steps_attributes={recipe.cooking_steps_attributes}
             />
           ))}
         </tbody>
