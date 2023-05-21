@@ -30,12 +30,12 @@ function CreateRecipe() {
         cook_time: "",
         sprouty_pie: false,
         lollys_pantry: false,
-        ingredients_attributes: {},
-        ingredients: {},
-        nutritional_labels_attributes: {},
-        nutritional_labels: {},
-        cooking_steps: {},
-        cooking_steps_attributes: {},
+        ingredients_attributes: [],
+        ingredients: [],
+        nutritional_labels_attributes: [],
+        nutritional_labels: [],
+        cooking_steps: [],
+        cooking_steps_attributes: [],
       }}
       doSubmit={doSubmit}
     />
