@@ -34,6 +34,8 @@ function CreateRecipe() {
         ingredients: {},
         nutritional_labels_attributes: {},
         nutritional_labels: {},
+        cooking_steps: {},
+        cooking_steps_attributes: {},
       }}
       doSubmit={doSubmit}
     />

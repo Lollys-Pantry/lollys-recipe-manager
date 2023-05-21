@@ -3,6 +3,8 @@ export interface RecipeItem {
   ingredients: unknown;
   nutritional_labels_attributes: unknown;
   nutritional_labels: unknown;
+  cooking_steps: unknown;
+  cooking_steps_attributes: unknown;
   id?: number;
   name: string;
   description: string;
@@ -34,4 +36,10 @@ export interface NutritionalLabel {
   sugar: string;
   protein: string;
   recipe_id: number;
+}
+
+export interface CookingStep {
+  id?: number;
+  step: number;
+  description: string;
 }
