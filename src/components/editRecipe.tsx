@@ -4,25 +4,46 @@ import axios from "axios";
 import RecipeForm from "./recipeform";
 import { RecipeItem } from "../types/data";
 
-function removeFromArray(newArray: { id?: number, _destroy?: unknown }[], oldArray: { id?: number }[]) {
+function removeFromArray(
+  newArray: { id?: number; _destroy?: unknown }[],
+  oldArray: { id?: number }[]
+) {
   const newIds = newArray.map((item) => item.id);
   const oldIds = oldArray.map((item) => item.id);
   const deletedIds = oldIds.filter((id) => !newIds.includes(id));
 
   deletedIds.forEach((id) => {
-    newArray.push({ id, "_destroy": "1" });
+    newArray.push({ id, _destroy: "1" });
   });
 }
 
 function removeDeletedItems(newRecipe: RecipeItem, oldRecipe: RecipeItem) {
-  if (newRecipe.ingredients_attributes !== undefined && oldRecipe.ingredients_attributes !== undefined) {
-    removeFromArray(newRecipe.ingredients_attributes, oldRecipe.ingredients_attributes);
+  if (
+    newRecipe.ingredients_attributes !== undefined &&
+    oldRecipe.ingredients_attributes !== undefined
+  ) {
+    removeFromArray(
+      newRecipe.ingredients_attributes,
+      oldRecipe.ingredients_attributes
+    );
   }
-  if (newRecipe.nutritional_labels_attributes !== undefined && oldRecipe.nutritional_labels_attributes !== undefined) {
-    removeFromArray(newRecipe.nutritional_labels_attributes, oldRecipe.nutritional_labels_attributes);
+  if (
+    newRecipe.nutritional_labels_attributes !== undefined &&
+    oldRecipe.nutritional_labels_attributes !== undefined
+  ) {
+    removeFromArray(
+      newRecipe.nutritional_labels_attributes,
+      oldRecipe.nutritional_labels_attributes
+    );
   }
-  if (newRecipe.cooking_steps_attributes !== undefined && oldRecipe.cooking_steps_attributes !== undefined) {
-    removeFromArray(newRecipe.cooking_steps_attributes, oldRecipe.cooking_steps_attributes);
+  if (
+    newRecipe.cooking_steps_attributes !== undefined &&
+    oldRecipe.cooking_steps_attributes !== undefined
+  ) {
+    removeFromArray(
+      newRecipe.cooking_steps_attributes,
+      oldRecipe.cooking_steps_attributes
+    );
   }
 }
 function EditRecipe() {
