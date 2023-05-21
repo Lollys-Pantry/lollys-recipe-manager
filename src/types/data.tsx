@@ -1,10 +1,10 @@
 export interface RecipeItem {
-  ingredients_attributes: unknown;
-  ingredients: unknown;
-  nutritional_labels_attributes: unknown;
-  nutritional_labels: unknown;
-  cooking_steps: unknown;
-  cooking_steps_attributes: unknown;
+  ingredients_attributes?: Ingredient[];
+  ingredients?: Ingredient[];
+  nutritional_labels_attributes?: NutritionalLabel[];
+  nutritional_labels?: NutritionalLabel[];
+  cooking_steps?: CookingStep[];
+  cooking_steps_attributes?: CookingStep[];
   id?: number;
   name: string;
   description: string;

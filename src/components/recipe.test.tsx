@@ -12,12 +12,12 @@ const recipeItem = {
   cook_time: "20 minutes",
   sprouty_pie: false,
   lollys_pantry: true,
-  ingredients: {},
-  ingredients_attributes: {},
-  nutritional_labels: {},
-  nutritional_labels_attributes: {},
-  cooking_steps: {},
-  cooking_steps_attributes: {},
+  ingredients: [],
+  ingredients_attributes: [],
+  nutritional_labels: [],
+  nutritional_labels_attributes: [],
+  cooking_steps: [],
+  cooking_steps_attributes: [],
 };
 
 describe("when rendered", () => {
