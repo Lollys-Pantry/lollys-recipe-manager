@@ -34,6 +34,11 @@ function RecipeForm(props: {
     append: cookingStepsAppend,
     remove: cookingStepsRemove,
   } = useFieldArray({ control, name: "cooking_steps" });
+  const {
+    fields: tags,
+    append: tagsAppend,
+    remove: tagsRemove,
+  } = useFieldArray({ control, name: "tags" });
 
   const onSubmit = async (formData: unknown) => {
     const recipeData = formData as RecipeItem;
@@ -44,6 +49,8 @@ function RecipeForm(props: {
     delete recipeData.nutritional_labels;
     recipeData.cooking_steps_attributes = recipeData.cooking_steps;
     delete recipeData.cooking_steps;
+    recipeData.tags_attributes = recipeData.tags;
+    delete recipeData.tags;
     doSubmit(recipeData);
   };
 
@@ -313,6 +320,66 @@ function RecipeForm(props: {
             }
           >
             Add cooking step
+          </Button>
+        )}
+      </div>
+
+      <div className="tags-fields">
+        {tags.map((tag, index) => {
+          const idPrefix = `tags.${index}.`;
+          return (
+            <fieldset key={tag.id}>
+              <Form.Group as={Row} className="mb-3">
+                <Form.Label column sm={2}>
+                  Name
+                </Form.Label>
+                <Col sm={10}>
+                  <Form.Control type="text" {...register(`${idPrefix}name`)} />
+                </Col>
+              </Form.Group>
+              <Form.Group as={Row} className="mb-3">
+                <Form.Label column sm={2}>
+                  Category
+                </Form.Label>
+                <Col sm={10}>
+                  <Form.Control
+                    type="text"
+                    {...register(`${idPrefix}category`)}
+                  />
+                </Col>
+              </Form.Group>
+              <button type="button" onClick={() => tagsRemove(index)}>
+                Delete tag
+              </button>
+            </fieldset>
+          );
+        })}
+        <Button
+          variant="outline-info"
+          size="sm"
+          className="tag-button"
+          onClick={() =>
+            tagsAppend({
+              name: "",
+              category: "",
+            })
+          }
+        >
+          Add tag
+        </Button>
+        {Object.keys(tags).length === 0 && (
+          <Button
+            variant="outline-info"
+            size="sm"
+            className="tags-button"
+            onClick={() =>
+              tagsAppend({
+                name: "",
+                category: "",
+              })
+            }
+          >
+            Add tag
           </Button>
         )}
       </div>

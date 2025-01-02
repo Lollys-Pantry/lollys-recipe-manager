@@ -65,6 +65,8 @@ function RecipeList() {
               }
               cooking_steps={recipe.cooking_steps}
               cooking_steps_attributes={recipe.cooking_steps_attributes}
+              tags={recipe.tags}
+              tags_attributes={recipe.tags_attributes}
             />
           ))}
         </tbody>
