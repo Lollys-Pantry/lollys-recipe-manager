@@ -18,6 +18,8 @@ const recipeItem = {
   nutritional_labels_attributes: [],
   cooking_steps: [],
   cooking_steps_attributes: [],
+  tags: [],
+  tags_attributes: [],
 };
 
 describe("when rendered", () => {
@@ -41,6 +43,8 @@ describe("when rendered", () => {
           }
           cooking_steps={recipeItem.cooking_steps}
           cooking_steps_attributes={recipeItem.cooking_steps_attributes}
+          tags={recipeItem.tags}
+          tags_attributes={recipeItem.tags_attributes}
         />
       </Router>
     );

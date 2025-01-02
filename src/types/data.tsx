@@ -5,6 +5,8 @@ export interface RecipeItem {
   nutritional_labels?: NutritionalLabel[];
   cooking_steps?: CookingStep[];
   cooking_steps_attributes?: CookingStep[];
+  tags?: Tag[];
+  tags_attributes?: Tag[];
   id?: number;
   name: string;
   description: string;
@@ -42,4 +44,11 @@ export interface CookingStep {
   id?: number;
   step: number;
   description: string;
+}
+
+export interface Tag {
+  id?: number;
+  name: string;
+  category: string;
+  recipe_id: number;
 }
